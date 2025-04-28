@@ -1,7 +1,7 @@
 extends Area2D
 
 signal vector_created(vector)
-@export var max_length: float = 50.0
+@export var max_length: float = 20.0
 
 const MAX_FORCE: float = 50.0
 var start_pos: Vector2 = Vector2.ZERO
@@ -21,6 +21,7 @@ func _reset():
 
 func _draw():
     draw_line(self.position, end_pos, Color.DARK_CYAN, 8)
+    draw_line(self.position, -end_pos * 2, Color.WHITE, 2)
     
 func _input(event) -> void:
     if not clicking:
