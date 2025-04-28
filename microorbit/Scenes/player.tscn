@@ -1,16 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1avhtkda71ny"]
+[gd_scene load_steps=4 format=3 uid="uid://wighh1tfa3x"]
 
-[ext_resource type="Texture2D" uid="uid://dgsyqsvf13d2p" path="res://Assets/circle.png" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://cw3du82lshxo0" path="res://Scripts/player.gd" id="1_8xjnt"]
+[ext_resource type="Texture2D" uid="uid://dgsyqsvf13d2p" path="res://Assets/circle.png" id="2_ufh5k"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_505pi"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvio3"]
 radius = 8.06226
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="CharacterBody2D"]
+input_pickable = true
+script = ExtResource("1_8xjnt")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ufh5k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CircleShape2D_505pi")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture = ExtResource("1_v0iea")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xvio3")

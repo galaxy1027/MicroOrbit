@@ -1,4 +1,8 @@
-res://Scenes/Level1.tscn
 res://Scenes/Levels/Level1.tscn
 res://Scenes/player.tscn
 res://Scenes/player.gd
+res://vector_creator.gd
+res://vector_creator.tscn
+res://Scenes/vector_drawer.tscn
+res://Scripts/vector_drawer.gd
+res://Scripts/player.gd

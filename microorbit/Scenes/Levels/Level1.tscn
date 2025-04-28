@@ -1,12 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://1syg674mtj7g"]
+[gd_scene load_steps=5 format=3 uid="uid://1syg674mtj7g"]
 
-[ext_resource type="PackedScene" uid="uid://c1avhtkda71ny" path="res://Scenes/player.tscn" id="1_5jgm0"]
-[ext_resource type="Script" uid="uid://cilha0vlqw5fb" path="res://Scenes/player.gd" id="2_36ke7"]
+[ext_resource type="PackedScene" uid="uid://wighh1tfa3x" path="res://Scenes/player.tscn" id="1_5jgm0"]
+[ext_resource type="PackedScene" uid="uid://410r5y8o36p5" path="res://Scenes/vector_drawer.tscn" id="2_36ke7"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jgm0"]
+size = Vector2(579, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36ke7"]
+size = Vector2(20, 314)
+
+[node name="Level" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5jgm0")]
-script = ExtResource("2_36ke7")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="VectorDrawer" parent="Player" instance=ExtResource("2_36ke7")]
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, -324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(-0.5, 154)
+shape = SubResource("RectangleShape2D_5jgm0")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
+position = Vector2(-0.5, 166)
+shape = SubResource("RectangleShape2D_5jgm0")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
+position = Vector2(-295, -2)
+shape = SubResource("RectangleShape2D_36ke7")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
+position = Vector2(295, -0.5)
+shape = SubResource("RectangleShape2D_36ke7")
+
+[connection signal="vector_created" from="Player/VectorDrawer" to="Player" method="launch"]

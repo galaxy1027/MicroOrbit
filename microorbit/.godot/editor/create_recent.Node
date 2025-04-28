@@ -1,7 +1,11 @@
 Camera2D
+CharacterBody2D
+CollisionShape2D
+Area2D
+SubViewport
+StaticBody2D
+Node2D
 Sprite2D
 AnimatedSprite2D
 MeshInstance2D
-CollisionShape2D
 RigidBody2D
-Node2D

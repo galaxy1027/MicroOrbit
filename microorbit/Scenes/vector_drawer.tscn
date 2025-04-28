@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://410r5y8o36p5"]
+
+[ext_resource type="Script" uid="uid://cb2tuwixnbikm" path="res://Scripts/vector_drawer.gd" id="1_3x2xn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3lwv"]
+
+[node name="VectorDrawer" type="Area2D"]
+script = ExtResource("1_3x2xn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f3lwv")
