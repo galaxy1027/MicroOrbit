@@ -1,25 +1,27 @@
 extends CharacterBody2D
 
-const MAX_VELOCITY: Vector2 = Vector2(5, 5)
 const START_POS: Vector2 = Vector2(0, 0)
+const FRICTION: float = 0.5
+const MAX_SPEED: float = 100
 
 func _ready() -> void:
-    _reset()
-    
+	_reset()
+	
 func _reset() -> void:
-    position = START_POS
-    velocity = Vector2.ZERO
+	position = START_POS
+	velocity = Vector2.ZERO
 
 func launch(force: Vector2) -> void:
-    velocity += force
-    print(velocity)
-        
+	velocity += force
+	print(velocity)
+		
 func kill_player() -> void:
-    print("no...")
-    _reset()
-        
+	print("no...")
+	_reset()
+		
 func _physics_process(delta: float) -> void:
-    velocity.limit_length(20)
-    position += velocity * delta
-    velocity.move_toward(Vector2.ZERO, delta)
-    
+	position += velocity * delta
+	print(velocity.length())
+	velocity = velocity.limit_length(MAX_SPEED)
+	velocity.x = velocity.x * (1 - FRICTION * delta)
+	velocity.y = velocity.y * (1 - FRICTION * delta)
