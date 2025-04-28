@@ -3,6 +3,7 @@ extends Area2D
 signal vector_created(vector)
 @export var max_length: float = 50.0
 
+const MAX_FORCE: float = 50.0
 var start_pos: Vector2 = Vector2.ZERO
 var end_pos: Vector2 = Vector2.ZERO
 var clicking: bool = false
@@ -19,7 +20,7 @@ func _reset():
     queue_redraw() # update to draw no vector
 
 func _draw():
-    draw_line(start_pos, end_pos, Color.DARK_CYAN, 8)
+    draw_line(self.position, end_pos, Color.DARK_CYAN, 8)
     
 func _input(event) -> void:
     if not clicking:
@@ -29,11 +30,11 @@ func _input(event) -> void:
         emit_signal("vector_created", vector)
         _reset()
     elif event is InputEventMouseMotion:
-        end_pos = event.position
-        vector = -(end_pos - start_pos).limit_length(50.0)
+        end_pos = get_local_mouse_position()
+        vector = -(end_pos - start_pos).limit_length(MAX_FORCE)
         queue_redraw() # mouse was moved, redraw vector
 
 func _input_event(_viewport, event, _shape_idx):
     if (Input.is_action_pressed("click")):
         clicking = true
-        start_pos = event.position
+        start_pos = self.global_position
