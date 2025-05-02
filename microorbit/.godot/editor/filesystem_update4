@@ -4,3 +4,4 @@ res://Scenes/vector_drawer.tscn
 res://Scenes/enemy.tscn
 res://Scripts/player.gd
 res://Scripts/vector_drawer.gd
+res://Scripts/enemy.gd
