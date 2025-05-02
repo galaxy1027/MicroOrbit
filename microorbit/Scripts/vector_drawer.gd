@@ -28,10 +28,13 @@ func _input(event) -> void:
         return
     elif event.is_action_released("click"):
         clicking = false
+        end_pos = get_local_mouse_position()
+        vector = -(end_pos - start_pos).limit_length(MAX_FORCE)
         emit_signal("vector_created", vector)
         _reset()
     elif event is InputEventMouseMotion:
         end_pos = get_local_mouse_position()
+        start_pos = self.position
         vector = -(end_pos - start_pos).limit_length(MAX_FORCE)
         queue_redraw() # mouse was moved, redraw vector
 

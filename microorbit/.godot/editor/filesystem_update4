@@ -1,12 +1,6 @@
 res://Scenes/Levels/Level1.tscn
 res://Scenes/player.tscn
-res://Scenes/player.gd
-res://vector_creator.gd
-res://vector_creator.tscn
 res://Scenes/vector_drawer.tscn
-res://Scripts/vector_drawer.gd
-res://Scripts/player.gd
-res://enemy.tscn
-res://enemy.gd
 res://Scenes/enemy.tscn
-res://Scripts/enemy.gd
+res://Scripts/player.gd
+res://Scripts/vector_drawer.gd

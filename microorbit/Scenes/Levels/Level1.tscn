@@ -1,12 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://1syg674mtj7g"]
+[gd_scene load_steps=7 format=4 uid="uid://1syg674mtj7g"]
 
 [ext_resource type="PackedScene" uid="uid://wighh1tfa3x" path="res://Scenes/player.tscn" id="1_5jgm0"]
 [ext_resource type="PackedScene" uid="uid://410r5y8o36p5" path="res://Scenes/vector_drawer.tscn" id="2_36ke7"]
 [ext_resource type="PackedScene" uid="uid://dghrr3menhlxn" path="res://Scenes/enemy.tscn" id="3_riv1q"]
+[ext_resource type="Texture2D" uid="uid://8q5bg2j3sarg" path="res://Assets/wall.png" id="4_xvio3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kri6y"]
+texture = ExtResource("4_xvio3")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_4d3fe"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_kri6y")
 
 [node name="Level" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5jgm0")]
+collision_layer = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2(0, -80.79)
@@ -17,7 +29,12 @@ position_smoothing_speed = 10.0
 [node name="VectorDrawer" parent="Player" instance=ExtResource("2_36ke7")]
 
 [node name="Enemy" parent="." instance=ExtResource("3_riv1q")]
-position = Vector2(170, -179)
+position = Vector2(63, -177)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAD3/wIAAAAAAAAAAAD3/wEAAAAAAAAAAAD3/wAAAAAAAAAAAAD3////AAAAAAAAAAD3//7/AAAAAAAAAAD3//3/AAAAAAAAAAD3//z/AAAAAAAAAAD3//v/AAAAAAAAAAD3//r/AAAAAAAAAAD3//n/AAAAAAAAAAD4//n/AAAAAAAAAAD4//r/AAAAAAAAAAD4//v/AAAAAAAAAAD4//z/AAAAAAAAAAD4//3/AAAAAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAAAAAD4/wAAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD5/wIAAAAAAAAAAAD5/wEAAAAAAAAAAAD5/wAAAAAAAAAAAAD5////AAAAAAAAAAD5//7/AAAAAAAAAAD5//3/AAAAAAAAAAD5//z/AAAAAAAAAAD5//v/AAAAAAAAAAD5//r/AAAAAAAAAAD5//n/AAAAAAAAAAD3/wMAAAAAAAAAAAD4/wMAAAAAAAAAAAD5/wMAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAP//AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPr/AAAAAAAAAAAIAPn/AAAAAAAAAAAHAPn/AAAAAAAAAAAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAPn/AAAAAAAAAAAGAPr/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP//AAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_4d3fe")
 
 [connection signal="vector_created" from="Player/VectorDrawer" to="Player" method="launch"]
 [connection signal="kill_player" from="Enemy" to="Player" method="kill_player"]

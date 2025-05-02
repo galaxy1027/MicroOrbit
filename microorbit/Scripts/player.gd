@@ -12,7 +12,8 @@ func _reset() -> void:
 
 func launch(force: Vector2) -> void:
     velocity += force
-    print(velocity)
+    # print(velocity)
+    print(force)
         
 func kill_player() -> void:
     print("no...")
