@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwfhrxmpjxl5a"]
+
+[ext_resource type="Script" uid="uid://djeppw8of6ilg" path="res://Scripts/orbit.gd" id="1_t7fpp"]
+[ext_resource type="Texture2D" uid="uid://cgievhwhbd276" path="res://Assets/orbit.png" id="2_r0up0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0up0"]
+
+[node name="Orbit" type="Area2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_t7fpp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_r0up0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_r0up0")

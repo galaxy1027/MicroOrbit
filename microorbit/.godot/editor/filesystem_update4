@@ -1,7 +1,11 @@
-res://Scenes/Levels/Level1.tscn
+res://Scenes/Level.tscn
 res://Scenes/player.tscn
 res://Scenes/vector_drawer.tscn
 res://Scenes/enemy.tscn
+res://Scenes/orbit.tscn
+res://Scripts/orbit.gd
 res://Scripts/player.gd
 res://Scripts/vector_drawer.gd
-res://Scripts/enemy.gd
+res://goal.tscn
+res://Scripts/goal.gd
+res://Scenes/goal.tscn
